@@ -80,7 +80,8 @@ class clientController extends oeDispatchController
         $resource = HttpRestRouteHandler::dispatch($gbl::$FHIR_ROUTE_MAP, $api, 'GET', 'direct-json');
 
         // create resource on Fhir server.
-        $returned = oeHttp::bodyFormat('body')->usingBaseUri($this->fhirBase)->put($fhir_uri, $resource);
+        $head = '<strong>FHIR call args</strong><br />' . $this->fhirBase . '<br />' . $fhir_uri . '<br />' . $resource . '<br />';
+        /*$returned = oeHttp::bodyFormat('body')->usingBaseUri($this->fhirBase)->put($fhir_uri, $resource);
         $reply = $returned->body();
 
         $head = '<strong>Transaction Status: ' . $returned->getStatusCode() . ' ' . $returned->getReasonPhrase() . '</strong><br/>';
@@ -89,6 +90,8 @@ class clientController extends oeDispatchController
         }
 
         return $head . '<strong>Replied Resource:</strong><br />' . $reply . '<br />';
+        */
+        return $head;
     }
 
     public function historyAction()
