@@ -81,17 +81,16 @@ class clientController extends oeDispatchController
 
         // create resource on Fhir server.
         $head = '<strong>FHIR call args</strong><br />' . $this->fhirBase . '<br />' . $fhir_uri . '<br />' . $resource . '<br />';
-        /*$returned = oeHttp::bodyFormat('body')->usingBaseUri($this->fhirBase)->put($fhir_uri, $resource);
+        $returned = oeHttp::bodyFormat('body')->usingBaseUri($this->fhirBase)->put($fhir_uri, $resource);
+        $head .= '<strong>After calling FHIR</strong><br />' . $returned . '<br />';
         $reply = $returned->body();
 
-        $head = '<strong>Transaction Status: ' . $returned->getStatusCode() . ' ' . $returned->getReasonPhrase() . '</strong><br/>';
+        $head .= '<strong>Transaction Status: ' . $returned->getStatusCode() . ' ' . $returned->getReasonPhrase() . '</strong><br/>';
         foreach ($returned->getHeaders() as $name => $values) {
             $head .= $name . ': ' . implode(', ', $values) . "<br/>";
         }
 
         return $head . '<strong>Replied Resource:</strong><br />' . $reply . '<br />';
-        */
-        return $head;
     }
 
     public function historyAction()
